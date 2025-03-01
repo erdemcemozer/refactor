@@ -1,43 +1,40 @@
 # Gerimedica Assignment
 
-Welcome to this **Gerimedica** repository. This is a **Spring Boot** project built for an **assignment**. The code, while functional, **is not production-ready** and **may contain questionable or non-ideal implementations**. Part of the challenge is to **discover**, **review**, and **improve** these elements.
+What changed?
+- Folder structure added
+- Functionality stays the same with more efficient and cleaner code inside of all classes.
+- Response objects chaned to DTO's.
+- Exception handling added.
+- H2 console added.
+- Swagger added.
+- Usage of Lombok.
 
----
+Access Swagger after starting the application : http://localhost:8080/swagger-ui/index.html#/
 
-## What to Expect
+Access H2 Console after starting the application : 
+- URL : http://localhost:8080/h2-console/login.jsp
+- JDBC URL : jdbc:h2:mem:assignment
+- User Name : root
+- Password : root
 
-- A **simple** REST API for managing `Patients` and their `Appointments`.
-- Multiple classes (controllers, services, entities, and repositories).
-- **Incomplete** or **inefficient** approaches to certain tasks.
+Controller :
+- Changed to a more readeble class without complex operations.
+- Mappings changed.
 
----
+Service :
+- Service class separeted as HospitalService and HospitalServiceImpl which provides loose coupling.
+- Service operations changed with short and cleaner code with new features of Java.
+- Usage of Optional class to handle exceptions and operations.
 
-## Glossary
+Models :
+- Boilerplate codes removed with Lombok usage.
+- Changed all fields as private to prevent direct access.
+- Records used for DTO objects to get rid of unnecessary code.
+- Appointment's lazy fetch type removed because of data loss when calling the API.
+- JsonIgnore added to Patient entity to prevent data coming as nested loop.
 
-Below are the primary entities you’ll find in this codebase:
+Exceptions :
+- Global exception handling added.  
 
-1. **Patient**
-    - Represents an individual in the hospital system.
-    - Fields may include:
-        - `id`: auto-generated primary key
-        - `name`: name of the patient
-        - `ssn`: Social Security Number (used here as a unique identifier)
-        - `appointments`: a list of `Appointment` objects linked to this patient
-
-2. **Appointment**
-    - Represents a scheduled appointment or event for a patient.
-    - Fields may include:
-        - `id`: auto-generated primary key
-        - `reason`: a textual reason for the appointment (e.g., “Checkup”)
-        - `date`: the date of the appointment
-        - `patient`: a reference to the `Patient` who owns this appointment
-
----
-
-## Goals
-
-1. **Explore the codebase**: Familiarize yourself with the structure and logic.
-2. **Identify potential issues**: Think about security, performance, maintainability, design patterns, etc.
-3. **Propose and/or implement improvements**: Refactor, rewrite, or reorganize parts of the code to showcase your approach.
-
----
+Converter : 
+- A converter added to use DTO instead of directly entity.
